@@ -25,6 +25,11 @@ fun main() {
     println(numA is Int);
 
     var gen = Gen("Hello");
+
+    numberCount();
+    whenCase(1);
+    whenCase("Str");
+    whenCase(32);
 }
 
 //generic
@@ -34,10 +39,26 @@ fun checkIsBool(param: Any): Boolean {
 
 //Elvis
 fun message(message: String): String? {
-    if(message.length < 15){
+    if (message.length < 15) {
         return message;
     }
     return null;
+}
+
+// for
+var numbers = listOf(1,2,3,4,5,6,7);
+fun numberCount() {
+    for (number in numbers) {
+        print("$number ")
+    }
+}
+
+fun whenCase(obj: Any) {
+    when (obj) {
+        1 -> println("Number One");
+        is String -> println(obj);
+        else -> println("other");
+    }
 }
 
 //interface
