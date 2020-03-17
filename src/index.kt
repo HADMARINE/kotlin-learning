@@ -2,8 +2,8 @@ import kotlin.reflect.typeOf
 
 fun main() {
     var s = "Hello world";
-    val str2 :String = "Hello world";
-    var intArr: Array<Int> = arrayOf(1,2,3,4,5,6,7,8,9,0);
+    val str2: String = "Hello world";
+    var intArr: Array<Int> = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 0);
     var boolEan: Boolean = true;
 
     var ifVar = if (boolEan) "true" else "false";
@@ -14,7 +14,7 @@ fun main() {
     println(boolEan);
     println(ifVar);
 
-    var person = Person("Hello", "World",16);
+    var person = Person("Hello", "World", 16);
     println(person.getFullName());
     println(person.getCurrentAge());
     println(person.elapseYear(3));
@@ -22,20 +22,28 @@ fun main() {
 //    println(checkIsBool("Hello"));
 
     val numA = 1;
-    println(numA is Int)
+    println(numA is Int);
 
     var gen = Gen("Hello");
 }
 
 //generic
-fun checkIsBool (param: Any): Boolean {
+fun checkIsBool(param: Any): Boolean {
     return param is Boolean;
+}
+
+//Elvis
+fun message(message: String): String? {
+    if(message.length < 15){
+        return message;
+    }
+    return null;
 }
 
 //interface
 interface Foo {
     val bar: Int;
-    fun baz(qux: String) :String;
+    fun baz(qux: String): String;
 }
 
 class OverrideFoo(override val bar: Int) : Foo {
@@ -59,17 +67,18 @@ open class Person(private val firstName: String, private val lastName: String, p
         return age;
     }
 
-    fun getCurrentAge():Int = age;
+    fun getCurrentAge(): Int = age;
 }
 
-class Child(private val firstName: String, private val lastName: String, private var age: Int) : Person(firstName,lastName, age) {
+class Child(private val firstName: String, private val lastName: String, private var age: Int) :
+    Person(firstName, lastName, age) {
     override val newName: String
         get() = "$lastName $firstName"
 }
 
 //generic
-class Gen<T>(var value: T){
-    fun checkIsBoolean(){
+class Gen<T>(var value: T) {
+    fun checkIsBoolean() {
 //        return value is Boolean;
     }
 }
