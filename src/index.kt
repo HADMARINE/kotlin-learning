@@ -21,13 +21,16 @@ fun main() {
 
 //    println(checkIsBool("Hello"));
 
+    val numA = 1;
+    println(numA is Int)
+
     var gen = Gen("Hello");
 }
 
 //generic
-//fun checkIsBool (param:? super T) {
-//    return (typeof param == Boolean);
-//}
+fun checkIsBool (param: Any): Boolean {
+    return param is Boolean;
+}
 
 //interface
 interface Foo {
@@ -67,6 +70,6 @@ class Child(private val firstName: String, private val lastName: String, private
 //generic
 class Gen<T>(var value: T){
     fun checkIsBoolean(){
-        return value is Boolean;
+//        return value is Boolean;
     }
 }
